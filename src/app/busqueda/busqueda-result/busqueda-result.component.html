@@ -1,0 +1,31 @@
+<div *ngIf="criteriaListenedFromExternalComponent.criteria==''" class="wrapper">
+  <div class="titulo">
+    <h1 style="color: aliceblue;">Criteria no seleccionada</h1>
+  </div>
+</div>
+<div class="wrapper" *ngIf="loading">
+  <div  class="lds-dual-ring"></div>
+</div>
+<div *ngIf="criteriaListenedFromExternalComponent.criteria!='' && !loading"  >
+  <div class="wrapper">
+    <div class="titulo">
+      <h1 style="color: aliceblue;">{{criteriaListenedFromExternalComponent.criteria}}</h1>
+    </div>
+  </div>
+  <hr>
+  <mat-grid-list cols="2"
+  rowHeight="20rem" gutterSize="1.5rem">
+  <div *ngFor="let country of criteriaListenedFromExternalComponent.paises">
+    <mat-grid-tile><img height="100%" [src]="country.flag"></mat-grid-tile>
+    <mat-grid-tile>
+      <div class="texto">
+        <h1>{{country.name}}</h1>
+        <h3>CAPITAL: {{country.capital}}</h3>
+        <h3>SUPERFICIE: {{country.area}} KM^2</h3>
+        <h3>POBLACI&Oacute;N: {{country.population}}</h3>
+        <h3>SUB REGI&Oacute;N: {{country.subregion}} </h3>
+      </div>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
+</div>
